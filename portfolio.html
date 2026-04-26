@@ -187,27 +187,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
       </div>
     </div>
 
-    <!-- 3. 게임엔진 경진대회 -->
-    <div class="pj-card" data-cat="game" onclick="openModal('engine')">
-      <div class="pj-thumb thumb-ict">
-        🎮
-        <span class="pj-ribbon ribbon-done">장려상</span>
-      </div>
-      <div class="pj-body">
-        <div class="pj-tags">
-          <span class="pj-tag pt-engine">Unity</span>
-          <span class="pj-tag pt-lang">C#</span>
-        </div>
-        <div class="pj-name">게임엔진 경진대회 출품작</div>
-        <p class="pj-desc">2024-1 성결대학교 게임엔진 경진대회 장려상 수상. Unity 기반 게임 프로젝트.</p>
-        <div class="pj-footer">
-          <span class="pj-year">2024</span>
-          <span class="pj-arrow">→</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 4. UX 소논문 -->
+    <!-- 3. UX 소논문 -->
     <div class="pj-card" data-cat="ux" onclick="openModal('ux')">
       <div class="pj-thumb thumb-ux">
         📄
@@ -227,28 +207,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
       </div>
     </div>
 
-    <!-- 5. 캡스톤디자인 -->
-    <div class="pj-card" data-cat="game" onclick="openModal('capstone')">
-      <div class="pj-thumb thumb-tcg">
-        🚀
-        <span class="pj-ribbon ribbon-done">캡스톤</span>
-      </div>
-      <div class="pj-body">
-        <div class="pj-tags">
-          <span class="pj-tag pt-engine">Unity</span>
-          <span class="pj-tag pt-lang">C#</span>
-          <span class="pj-tag pt-ux">캡스톤</span>
-        </div>
-        <div class="pj-name">캡스톤디자인(2) 출품작</div>
-        <p class="pj-desc">2025-1 성결대학교 캡스톤디자인(2) 경진대회 출품작.</p>
-        <div class="pj-footer">
-          <span class="pj-year">2025</span>
-          <span class="pj-arrow">→</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 6. Coming Soon -->
+    <!-- 4. Coming Soon -->
     <div class="pj-card soon" data-cat="game">
       <div class="pj-thumb thumb-empty">
         🔒
@@ -350,34 +309,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
   </div>
 </div>
 
-<div class="modal-overlay" id="modal-engine" onclick="bgClose(event,'engine')">
-  <div class="modal">
-    <div class="modal-close"><button class="close-btn" onclick="closeModal('engine')">닫기 ✕</button></div>
-    <div class="modal-content">
-      <div class="m-badge">GAME PROJECT · 장려상</div>
-      <div class="m-title">게임엔진 경진대회 출품작</div>
-      <p class="m-sub">2024-1 성결대학교 게임엔진 경진대회 장려상 · Unity</p>
-      <div class="m-tags">
-        <span class="pj-tag pt-engine">Unity</span>
-        <span class="pj-tag pt-lang">C#</span>
-      </div>
-      <div class="m-hl-row">
-        <div class="m-hl"><div class="m-hl-val">장려상</div><div class="m-hl-lbl">수상 등급</div></div>
-        <div class="m-hl"><div class="m-hl-val">2024</div><div class="m-hl-lbl">수상 연도</div></div>
-        <div class="m-hl"><div class="m-hl-val">Unity</div><div class="m-hl-lbl">사용 엔진</div></div>
-      </div>
-      <div class="m-divider"></div>
-      <div class="m-section">
-        <h3>OVERVIEW</h3>
-        <p>성결대학교 2024-1 게임엔진 경진대회에 출품하여 장려상을 수상한 Unity 기반 게임 프로젝트입니다. 상세 내용은 준비 중입니다.</p>
-      </div>
-      <div class="m-btns">
-        <a href="https://github.com/" target="_blank" class="m-btn m-btn-out">GitHub</a>
-      </div>
-    </div>
-  </div>
-</div>
-
 <div class="modal-overlay" id="modal-ux" onclick="bgClose(event,'ux')">
   <div class="modal">
     <div class="modal-close"><button class="close-btn" onclick="closeModal('ux')">닫기 ✕</button></div>
@@ -407,29 +338,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
   </div>
 </div>
 
-<div class="modal-overlay" id="modal-capstone" onclick="bgClose(event,'capstone')">
-  <div class="modal">
-    <div class="modal-close"><button class="close-btn" onclick="closeModal('capstone')">닫기 ✕</button></div>
-    <div class="modal-content">
-      <div class="m-badge">CAPSTONE · 2025</div>
-      <div class="m-title">캡스톤디자인(2) 출품작</div>
-      <p class="m-sub">2025-1 성결대학교 캡스톤디자인(2) 경진대회 · 교수학습지원센터</p>
-      <div class="m-tags">
-        <span class="pj-tag pt-engine">Unity</span>
-        <span class="pj-tag pt-lang">C#</span>
-        <span class="pj-tag pt-ux">캡스톤디자인</span>
-      </div>
-      <div class="m-divider"></div>
-      <div class="m-section">
-        <h3>OVERVIEW</h3>
-        <p>성결대학교 2025-1 캡스톤디자인(2) 경진대회 출품 프로젝트입니다. 상세 내용은 준비 중입니다.</p>
-      </div>
-      <div class="m-btns">
-        <a href="https://github.com/" target="_blank" class="m-btn m-btn-out">GitHub</a>
-      </div>
-    </div>
-  </div>
-</div>
 
 <script>
 const btns = document.querySelectorAll('.f-btn');
