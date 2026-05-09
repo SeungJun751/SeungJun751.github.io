@@ -1028,19 +1028,18 @@ footer strong {
 
 .modal-screenshot {
   width: 100%;
-  aspect-ratio: 16 / 9;
   background: var(--bg2);
   border: 1px solid var(--border2);
   border-radius: 12px;
   overflow: hidden;
   margin-top: 20px;
 }
- 
-.modal-gameplay img,
-.modal-gameplay video {
+
+.modal-screenshot img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto; 
+  object-fit: contain; 
+  display: block;
 }
  
 .modal-gameplay-placeholder {
