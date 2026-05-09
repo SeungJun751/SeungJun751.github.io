@@ -1427,7 +1427,7 @@ footer strong {
           <div class="project-placeholder">🎯</div>
         </div>
         <div class="project-body">
-          <h3 class="project-title">5.1채널 공간입체음향을 활용한 프로젝트</h3>
+          <h3 class="project-title">5.1채널 공간입체음향 프로젝트</h3>
           <p class="project-desc">
             5.1채널 스피커를 활용한 음향 퍼즐.
             블루투스와 연동한 걷기 시스템 구현.
@@ -1521,6 +1521,15 @@ footer strong {
           <span class="skill-tag st-tool">Visual Studio</span>
           <span class="skill-tag st-tool">Git</span>
           <span class="skill-tag st-tool">ScriptableObject</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-title">🛠 AI Tool</div>
+        <div class="skill-tags">
+          <span class="skill-tag st-tool">Claude Code</span>
+          <span class="skill-tag st-tool">Gemini</span>
+          <span class="skill-tag st-tool">Codex</span>
         </div>
       </div>
       
@@ -1759,10 +1768,7 @@ const io = new IntersectionObserver(
   { threshold: 0.08 }
 );
 document.querySelectorAll('.fi').forEach(el => io.observe(el));
-/* ========================================
-   프로젝트 모달 데이터
-   각 프로젝트의 내용을 여기에 추가/수정하세요
-   ======================================== */
+
 const projectsData = {
   1: {
     category: "MULTIPLAYER SHOOTING GAME",
@@ -1857,7 +1863,7 @@ function closeModal(event) {
   if (!event || event.target.classList.contains('modal-overlay')) {
     const modal = document.getElementById('projectModal');
     modal.classList.remove('active');
-    document.body.style.overflow = ''; // 배경 스크롤 복원
+    document.body.style.overflow = ''; 
   }
 }
  
