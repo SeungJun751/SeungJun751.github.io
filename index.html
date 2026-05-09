@@ -325,7 +325,6 @@ section {
   padding: 28px 24px;
   transition: all .3s;
   position: relative;
-  overflow: hidden;
 }
 
 .award-card::before {
@@ -339,6 +338,8 @@ section {
   transform: scaleX(0);
   transform-origin: left;
   transition: transform .3s;
+  overflow: hidden;
+  border-radius: 12px 12px 0 0;
 }
 
 .award-card:hover::before {
