@@ -1424,19 +1424,19 @@ footer strong {
       
       <div class="project-card" onclick="openProjectModal(1)">
         <div class="project-thumb">
-          <div class="project-placeholder">🎯</div>
+          <div class="project-placeholder">🎵</div>
         </div>
         <div class="project-body">
-          <h3 class="project-title">5.1채널 공간입체음향 프로젝트</h3>
+          <h3 class="project-title">Sound of Vista</h3>
           <p class="project-desc">
-            5.1채널 스피커를 활용한 음향 퍼즐.
-            블루투스와 연동한 걷기 시스템 구현.
+            5.1채널 공간 오디오와 IoT 운동 기구를 결합한 힐링 퍼즐 게임. 
+            사운드 기반 퍼즐과 Firebase 연동 시스템 구현.
           </p>
           <div class="project-tags">
-            <span class="project-tag">Unity</span>
-            <span class="project-tag">C#</span>
-            <span class="project-tag">Bluetooth</span>
+            <span class="project-tag">Unity 2022</span>
+            <span class="project-tag">Spatial Audio</span>
             <span class="project-tag">Firebase</span>
+            <span class="project-tag">IoT</span>
           </div>
         </div>
       </div>
@@ -1563,18 +1563,15 @@ footer strong {
 <div id="projectModal" class="modal-overlay" onclick="closeModal(event)">
   <div class="modal-container" onclick="event.stopPropagation()">
     
-    <!-- 닫기 버튼 -->
     <div style="padding: 20px 20px 0 20px; display: flex; justify-content: flex-end;">
       <div class="modal-close" onclick="closeModal()">×</div>
     </div>
     
-    <!-- 모달 헤더 -->
     <div class="modal-header">
-      <div class="modal-category" id="modalCategory">MULTIPLAYER SHOOTING GAME</div>
-      <h2 class="modal-title" id="modalTitle">멀티플레이어 슈팅 게임</h2>
+      <div class="modal-category" id="modalCategory">HEALING PUZZLE GAME</div>
+      <h2 class="modal-title" id="modalTitle">Sound of Healing</h2>
       <p class="modal-subtitle" id="modalSubtitle">
-        실시간 4인 협동 플레이를 지원하는 탑다운 슈팅 게임. 
-        Photon PUN2를 활용한 서버-클라이언트 동기화 구현.
+        5.1채널 공간 오디오를 활용한 몰입형 힐링 퍼즐 게임과 IoT 기반 운동 기구 연동 시스템.
       </p>
       
       <div class="modal-meta">
@@ -1584,7 +1581,7 @@ footer strong {
         </div>
         <div class="modal-meta-item">
           <div class="modal-meta-label">PERIOD</div>
-          <div class="modal-meta-value" id="modalPeriod">2024.09 — 2025.01</div>
+          <div class="modal-meta-value" id="modalPeriod">2024.09 — 2025.05</div>
         </div>
         <div class="modal-meta-item">
           <div class="modal-meta-label">TEAM</div>
@@ -1593,64 +1590,41 @@ footer strong {
       </div>
     </div>
     
-    <!-- 모달 본문 -->
     <div class="modal-body">
       
-      <!-- 메인 콘텐츠 (영상 + 정보) -->
       <div class="modal-main">
         
-        <!-- 왼쪽: 게임플레이 영상 -->
         <div class="modal-gameplay" id="modalGameplay">
-          <!-- 여기에 GIF나 비디오를 넣으려면 아래 주석을 해제하고 경로를 수정하세요 -->
-          <!-- <img src="gameplay.gif" alt="Gameplay"> -->
-          <!-- 또는 -->
-          <!-- <video autoplay loop muted playsinline>
-            <source src="gameplay.mp4" type="video/mp4">
-          </video> -->
-          
-          <!-- 임시 플레이스홀더 -->
           <div class="modal-gameplay-placeholder">🎮</div>
         </div>
         
-        <!-- 오른쪽: 프로젝트 정보 -->
         <div class="modal-info">
           
-          <!-- 프로젝트 개요 -->
           <div class="modal-info-block">
             <h3>프로젝트 개요</h3>
             <p id="modalOverview">
-              최대 4명의 플레이어가 실시간으로 협력하여 적을 물리치는 탑다운 슈팅 게임입니다. 
-              Photon PUN2를 활용하여 안정적인 멀티플레이어 환경을 구축했으며, 
-              각 플레이어의 역할과 무기 시스템을 차별화하여 전략적 플레이를 유도했습니다.
+              5.1채널 공간 오디오를 활용한 몰입형 힐링 퍼즐 게임과 IoT 기반 운동 기구 연동 시스템을 결합한 Unity 3D 프로젝트입니다.
             </p>
           </div>
           
-          <!-- 기술 스택 -->
           <div class="modal-info-block">
             <h3>기술 스택</h3>
             <div class="modal-tech-list" id="modalTechStack">
-              <span class="modal-tech-tag">Unity 2022.3</span>
-              <span class="modal-tech-tag">Photon PUN2</span>
+              <span class="modal-tech-tag">Unity 2022</span>
               <span class="modal-tech-tag">C#</span>
-              <span class="modal-tech-tag">ScriptableObject</span>
-              <span class="modal-tech-tag">Object Pooling</span>
-              <span class="modal-tech-tag">RPC</span>
+              <span class="modal-tech-tag">Firebase</span>
             </div>
           </div>
           
-          <!-- 핵심 기능 -->
           <div class="modal-info-block">
             <h3>핵심 기능</h3>
             <ul class="modal-features" id="modalFeatures">
-              <li>실시간 4인 멀티플레이어 매칭 및 동기화</li>
-              <li>플레이어별 차별화된 무기 시스템 (총기, 근접, 마법)</li>
-              <li>서버 권한 기반 적 AI 및 아이템 스폰 관리</li>
-              <li>낮은 레이턴시 환경에서 부드러운 이동 및 전투 구현</li>
-              <li>Object Pooling을 활용한 최적화</li>
+              <li>5.1채널 공간 오디오 시스템 구축</li>
+              <li>3가지 사운드 기반 퍼즐 설계</li>
+              <li>Firebase + IoT 운동 기구 연동</li>
             </ul>
           </div>
           
-          <!-- 프로젝트 링크 -->
           <div class="modal-info-block">
             <h3>링크</h3>
             <div class="modal-links">
@@ -1662,7 +1636,6 @@ footer strong {
         </div>
       </div>
       
-      <!-- Technical Challenge 섹션 -->
       <div class="modal-challenge">
         <div class="modal-challenge-header">
           <div class="modal-challenge-label">TECHNICAL CHALLENGE</div>
@@ -1672,76 +1645,71 @@ footer strong {
         
         <div class="modal-timeline" id="modalChallenges">
           
-          <!-- 타임라인 아이템 1 - 각 문제마다 복사해서 내용을 수정하세요 -->
           <div class="modal-timeline-item">
             <div class="modal-timeline-dot"></div>
             <div class="modal-timeline-label">CHALLENGE 01</div>
-            <h4 class="modal-timeline-title">네트워크 동기화 지연 문제</h4>
+            <h4 class="modal-timeline-title">오디오 믹서 볼륨 초기화 문제</h4>
             <div class="modal-timeline-content">
               <p>
-                <strong>문제:</strong> 플레이어 간 이동과 공격 동기화에서 최대 200ms의 지연 발생. 
-                특히 빠른 이동 중 위치 불일치로 인한 플레이 경험 저하.
+                <strong>문제:</strong> 씬 전환 후 BGM 볼륨이 -80dB로 초기화되어 소리가 들리지 않음. 
+                AudioMixer.SetFloat()가 즉시 적용되지 않고 프레임 지연 발생.
               </p>
               <p style="margin-top: 10px;">
-                <strong>해결:</strong> Photon의 Lag Compensation과 클라이언트 예측(Client Prediction)을 도입. 
-                로컬에서 즉시 이동 처리 후 서버 검증 방식으로 전환하여 체감 지연을 50ms 이하로 감소.
+                <strong>해결:</strong> Coroutine을 활용하여 1프레임 대기 후 볼륨 복구 로직 구현. 
+                씬 전환 시 안정적인 오디오 재생 보장.
               </p>
               <div class="modal-timeline-code">
-// 클라이언트 예측 이동 로직<br>
-void Update() {<br>
-&nbsp;&nbsp;if (photonView.IsMine) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;transform.position += input * speed * Time.deltaTime;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;photonView.RPC("SyncPosition", RpcTarget.Others, transform.position);<br>
-&nbsp;&nbsp;}<br>
+private IEnumerator Coroutine_ResetAudioMixer() {<br>
+&nbsp;&nbsp;audioMixer.SetFloat("BGMVolume", -80f);<br>
+&nbsp;&nbsp;yield return null; // 1프레임 대기<br>
+&nbsp;&nbsp;SetBGMVolume(targetBgmVolume); // 복구<br>
 }
               </div>
             </div>
           </div>
           
-          <!-- 타임라인 아이템 2 -->
           <div class="modal-timeline-item">
             <div class="modal-timeline-dot"></div>
             <div class="modal-timeline-label">CHALLENGE 02</div>
-            <h4 class="modal-timeline-title">대량 발사체 처리로 인한 성능 저하</h4>
+            <h4 class="modal-timeline-title">Spatial Audio Source Pooling</h4>
             <div class="modal-timeline-content">
               <p>
-                <strong>문제:</strong> 4명의 플레이어가 동시에 총알을 발사할 때 프레임 드롭 발생 (60fps → 30fps). 
-                매 프레임마다 수백 개의 발사체 Instantiate 및 Destroy 호출.
+                <strong>문제:</strong> 동시에 많은 3D 사운드 재생 시 성능 저하 및 AudioSource 중복 생성 발생.
               </p>
               <p style="margin-top: 10px;">
-                <strong>해결:</strong> Object Pooling 패턴 도입. 
-                발사체를 미리 생성하고 재사용하는 구조로 변경하여 프레임 안정화 (평균 58fps 유지).
+                <strong>해결:</strong> 32개의 AudioSource Pool을 사전 생성하고, 거리 기반 우선순위 시스템으로 
+                가장 가까운 사운드만 재생. 메모리 효율 향상 및 자연스러운 음원 페이드.
               </p>
               <div class="modal-timeline-code">
-// Object Pool 발사체 재사용<br>
-Projectile proj = ProjectilePool.Instance.Get();<br>
-proj.Initialize(direction, damage);<br>
-// 충돌 후<br>
-ProjectilePool.Instance.Return(proj);
+// 거리 기반 우선순위 정렬<br>
+virtualSounds = virtualSounds<br>
+&nbsp;&nbsp;.OrderBy(vs => Vector3.Distance(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;vs.position, listener.position))<br>
+&nbsp;&nbsp;.ToList();
               </div>
             </div>
           </div>
           
-          <!-- 타임라인 아이템 3 -->
           <div class="modal-timeline-item">
             <div class="modal-timeline-dot"></div>
             <div class="modal-timeline-label">CHALLENGE 03</div>
-            <h4 class="modal-timeline-title">적 AI 스폰 동기화 불일치</h4>
+            <h4 class="modal-timeline-title">Firebase Quaternion 회전 감지 정확도</h4>
             <div class="modal-timeline-content">
               <p>
-                <strong>문제:</strong> 각 클라이언트에서 독립적으로 적을 스폰하여 
-                서로 다른 적 수와 위치가 나타남. 협동 플레이 전략 불가능.
+                <strong>문제:</strong> Quaternion 값이 미세하게 변해도 회전으로 인식되어 오차 누적.
               </p>
               <p style="margin-top: 10px;">
-                <strong>해결:</strong> Master Client가 적 스폰을 전담하고 
-                RPC를 통해 모든 클라이언트에 동일한 적 정보 전송. 
-                씬 전환 시에도 일관성 유지 로직 추가.
+                <strong>해결:</strong> 각도 차이 누적 방식 사용. 360도 기준으로 정확한 회전 카운트 및 
+                잔여 각도 보존으로 연속 회전 지원.
               </p>
               <div class="modal-timeline-code">
-// Master Client에서만 적 스폰<br>
-if (PhotonNetwork.IsMasterClient) {<br>
-&nbsp;&nbsp;Vector3 spawnPos = GetRandomSpawnPoint();<br>
-&nbsp;&nbsp;photonView.RPC("SpawnEnemy", RpcTarget.All, spawnPos, enemyID);<br>
+float deltaAngle = Quaternion.Angle(<br>
+&nbsp;&nbsp;lastRotation, currentRotation);<br>
+accumulatedAngle += deltaAngle;<br>
+<br>
+if (accumulatedAngle >= 360f) {<br>
+&nbsp;&nbsp;RotationCount++;<br>
+&nbsp;&nbsp;accumulatedAngle -= 360f; // 오차 보정<br>
 }
               </div>
             </div>
@@ -1771,23 +1739,77 @@ document.querySelectorAll('.fi').forEach(el => io.observe(el));
 
 const projectsData = {
   1: {
-    category: "MULTIPLAYER SHOOTING GAME",
-    title: "멀티플레이어 슈팅 게임",
-    subtitle: "실시간 4인 협동 플레이를 지원하는 탑다운 슈팅 게임. Photon PUN2를 활용한 서버-클라이언트 동기화 구현.",
+    category: "HEALING PUZZLE Project",
+    title: "Sound of Vista",
+    subtitle: "5.1채널 공간 오디오를 활용한 몰입형 힐링 퍼즐 게임과 IoT 기반 운동 기구 연동 시스템.",
     role: "Lead Developer",
-    period: "2024.09 — 2025.01",
+    period: "2024.09 — 2025.05",
     team: "4명",
-    overview: "최대 4명의 플레이어가 실시간으로 협력하여 적을 물리치는 탑다운 슈팅 게임입니다. Photon PUN2를 활용하여 안정적인 멀티플레이어 환경을 구축했으며, 각 플레이어의 역할과 무기 시스템을 차별화하여 전략적 플레이를 유도했습니다.",
-    techStack: ["Unity 2022.3", "Photon PUN2", "C#", "ScriptableObject", "Object Pooling", "RPC"],
-    features: [
-      "실시간 4인 멀티플레이어 매칭 및 동기화",
-      "플레이어별 차별화된 무기 시스템 (총기, 근접, 마법)",
-      "서버 권한 기반 적 AI 및 아이템 스폰 관리",
-      "낮은 레이턴시 환경에서 부드러운 이동 및 전투 구현",
-      "Object Pooling을 활용한 최적화"
+    overview: "5.1채널 공간 오디오를 활용한 몰입형 힐링 퍼즐 게임과 IoT 기반 운동 기구 연동 시스템을 결합한 Unity 3D 프로젝트입니다. 플레이어는 봉인된 소리를 해방시키는 퍼즐을 풀며 힐링 경험을 하고, 실제 하체 운동 기구와 연동하여 게임 내 이동을 제어할 수 있습니다.",
+    techStack: [
+      "Unity 2022",
+      "C# (.NET)",
+      "Audio Mixer (5.1 Surround)",
+      "Spatial Audio",
+      "Firebase Realtime DB",
+      "Google Gemini API",
+      "Singleton Pattern",
+      "Object Pooling",
+      "ScriptableObject"
     ],
-    githubLink: "https://github.com/yourusername/project1",
-    videoLink: "https://youtube.com/watch?v=example1"
+    features: [
+      "Audio Mixer를 활용한 Master/BGM/SFX 독립 제어",
+      "32개의 AudioSource Pool을 통한 효율적인 3D 사운드 재생",
+      "거리 기반 우선순위 시스템으로 최적의 사운드만 재생",
+      "순서 기억 퍼즐 - 5개 기둥에서 3D 사운드 재생",
+      "멜로디 매칭 퍼즐 - 물 높이로 8개 음계 조절",
+      "동물 소리 경로 추적 퍼즐 - Line으로 경로 시각화",
+      "Firebase 기반 하체 운동 기구 실시간 연동",
+      "Quaternion 기반 회전 감지 및 게임 내 이동 변환",
+      "Google Gemini API 2.0 Flash 채팅 시스템",
+      "매니저 기반 아키텍처 (Audio, Interaction, Loading)",
+      "1인칭 시점 카메라 및 플레이어 제어 시스템"
+    ],
+    githubLink: "https://github.com/yourusername/sound-of-healing",
+    videoLink: "https://youtube.com/watch?v=example",
+    challenges: [
+      {
+        label: "CHALLENGE 01",
+        title: "오디오 믹서 볼륨 초기화 문제",
+        problem: "씬 전환 후 BGM 볼륨이 -80dB로 초기화되어 소리가 들리지 않음. AudioMixer.SetFloat()가 즉시 적용되지 않고 프레임 지연 발생.",
+        solution: "Coroutine을 활용하여 1프레임 대기 후 볼륨 복구 로직 구현. 씬 전환 시 안정적인 오디오 재생 보장.",
+        code: `private IEnumerator Coroutine_ResetAudioMixer() {
+  audioMixer.SetFloat("BGMVolume", -80f);
+  yield return null; // 1프레임 대기
+  SetBGMVolume(targetBgmVolume); // 복구
+}`
+      },
+      {
+        label: "CHALLENGE 02",
+        title: "Spatial Audio Source Pooling",
+        problem: "동시에 많은 3D 사운드 재생 시 성능 저하 및 AudioSource 중복 생성 발생.",
+        solution: "32개의 AudioSource Pool을 사전 생성하고, 거리 기반 우선순위 시스템으로 가장 가까운 사운드만 재생. 메모리 효율 향상 및 자연스러운 음원 페이드.",
+        code: `// 거리 기반 우선순위 정렬
+virtualSounds = virtualSounds
+  .OrderBy(vs => Vector3.Distance(
+    vs.position, listener.position))
+  .ToList();`
+      },
+      {
+        label: "CHALLENGE 03",
+        title: "Firebase Quaternion 회전 감지 정확도",
+        problem: "Quaternion 값이 미세하게 변해도 회전으로 인식되어 오차 누적.",
+        solution: "각도 차이 누적 방식 사용. 360도 기준으로 정확한 회전 카운트 및 잔여 각도 보존으로 연속 회전 지원.",
+        code: `float deltaAngle = Quaternion.Angle(
+  lastRotation, currentRotation);
+accumulatedAngle += deltaAngle;
+ 
+if (accumulatedAngle >= 360f) {
+  RotationCount++;
+  accumulatedAngle -= 360f; // 오차 보정
+}`
+      }
+    ]
   },
   2: {
     category: "BATTLE ROYALE",
