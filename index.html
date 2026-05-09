@@ -369,6 +369,33 @@ section {
   font-weight: 500;
 }
 
+.award-image {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  width: 300px;
+  max-width: 90vw;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .3s;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.award-card:hover .award-image {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-20px);
+}
+
+.award-image img {
+  width: 100%;
+  border-radius: 8px;
+  border: 2px solid var(--gold);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+}
+
 .medal-gold {
   background: rgba(201,168,76,.15);
   color: var(--gold);
@@ -1278,6 +1305,9 @@ footer strong {
     <div class="awards-grid">
       
       <div class="award-card">
+        <div class="award-image">
+          <img src="awards/award1.jpg" alt="award_01">
+      </div>
         <div class="award-year">2025</div>
         <div class="award-medal medal-gold">🥇 금상</div>
         <div class="award-title">ICT 어워드코리아</div>
