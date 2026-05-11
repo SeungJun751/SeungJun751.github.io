@@ -1953,6 +1953,28 @@ function openProjectModal(projectId) {
   } else {
     screenshotContainer.innerHTML = '<div style="padding: 40px; text-align: center; color: var(--muted);">이미지 준비중</div>';
   }
+
+  const challengesContainer = document.getElementById('modalChallenges');
+  if (project.challenges && project.challenges.length > 0) {
+    challengesContainer.innerHTML = project.challenges.map(ch => `
+      <div class="modal-timeline-item">
+        <div class="modal-timeline-dot"></div>
+        <div class="modal-timeline-label">${ch.label}</div>
+        <h4 class="modal-timeline-title">${ch.title}</h4>
+        <div class="modal-timeline-content">
+          <p>
+            <strong>문제:</strong> ${ch.problem}
+          </p>
+          <p style="margin-top: 10px;">
+            <strong>해결:</strong> ${ch.solution}
+          </p>
+          ${ch.code ? `<div class="modal-timeline-code">${ch.code.replace(/\n/g, '<br>')}</div>` : ''}
+        </div>
+      </div>
+    `).join('');
+  } else {
+    challengesContainer.innerHTML = '<div style="padding: 20px; text-align: center; color: var(--muted);">문제 해결 과정이 준비 중입니다.</div>';
+  }
   
   const modal = document.getElementById('projectModal');
   modal.classList.add('active');
