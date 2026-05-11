@@ -1475,11 +1475,14 @@ footer strong {
         <div class="project-body">
           <h3 class="project-title">Dodge Game</h3>
           <p class="project-desc">
-            사방에서 날아오는 레이저를 피하고, 적들을 처치한 뒤 코인을 얻는 게임. 
+            사방에서 날아오는 레이저를 피하고, 적들을 처치한 뒤 코인을 얻는 생존 게임.
+            NavMesh AI와 모바일 조이스틱 제어 구현.
           </p>
           <div class="project-tags">
             <span class="project-tag">Unity</span>
             <span class="project-tag">C#</span>
+            <span class="project-tag">NavMesh AI</span>
+            <span class="project-tag">Mobile</span>
           </div>
         </div>
       </div>
@@ -1840,26 +1843,83 @@ if (accumulatedAngle >= 360f) {
     githubLink: "https://github.com/yourusername/project2",
     videoLink: "https://youtube.com/watch?v=example2"
   },
-  3: {
-    category: "COOPERATIVE PUZZLE PLATFORMER",
-    title: "협동 퍼즐 플랫포머",
-    subtitle: "2인 협동 퍼즐 플랫포머. 각 플레이어의 고유 능력을 조합하여 스테이지를 클리어하는 게임 메커니즘.",
-    role: "Solo Developer",
-    period: "2023.11 — 2024.02",
-    team: "1명",
-    overview: "2명의 플레이어가 각자 다른 능력을 활용하여 협력해야만 클리어할 수 있는 퍼즐 플랫포머입니다. 한 명은 시간을 느리게 만들 수 있고, 다른 한 명은 중력을 조작할 수 있어 긴밀한 협동이 필수적입니다.",
-    techStack: ["Unity 2021.3", "C#", "Physics 2D", "Cinemachine", "Local Multiplayer"],
-    features: [
-      "2인 로컬 협동 플레이",
-      "시간 조작과 중력 조작이라는 차별화된 능력",
-      "능력을 조합해야 풀 수 있는 퍼즐 디자인",
-      "물리 기반 플랫포밍 메커니즘",
-      "25개 이상의 레벨 디자인"
-    ],
-    githubLink: "https://github.com/yourusername/project3",
-    videoLink: "https://youtube.com/watch?v=example3"
+3: {
+  category: "SURVIVAL DODGE GAME",
+  title: "Dodge Game",
+  subtitle: "사방에서 날아오는 레이저를 피하고 적을 처치하여 코인을 획득하는 생존 게임.",
+  role: "Solo Developer",
+  period: "2024.06 — 2024.08",
+  team: "1명",
+  overview: "플레이어는 360도 방향에서 날아오는 레이저를 회피하며 생존해야 합니다. 적을 처치하면 코인을 획득할 수 있으며, 시간이 지날수록 난이도가 증가합니다. NavMesh 기반 적 AI와 Object Pooling을 통한 최적화를 구현했습니다.",
+  techStack: [
+    "Unity",
+    "C#",
+    "NavMesh AI",
+    "Cinemachine",
+    "Mobile Joystick",
+    "PlayerPrefs",
+    "Coroutine"
+  ],
+  features: [
+    "360도 방향에서 레이저 발사 및 회피 시스템",
+    "NavMesh 기반 적 AI 추적 및 공격",
+    "적 처치 시 코인 드랍 및 회전 애니메이션",
+    "게임 오버 시 최고 기록 저장 (PlayerPrefs)",
+    "경고 시스템을 통한 랜덤 낙하물 생성",
+    "Cinemachine을 활용한 동적 카메라 추적",
+    "모바일 조이스틱 기반 플레이어 이동 제어",
+    "하트 UI를 통한 생명 시스템 (최대 5개)",
+    "실시간 타이머 및 코인 카운트 UI"
+  ],
+  screenshot: "screenshots/dodge-game.png",  // 스크린샷 경로
+  githubLink: "https://github.com/SeungJun751/DodgeGame",
+  videoLink: "https://youtube.com/watch?v=dodge-game",
+  challenges: [
+    {
+      label: "CHALLENGE 01",
+      title: "플레이어 리스폰 시 타겟 재설정 문제",
+      problem: "플레이어가 사망 후 리스폰될 때 BulletSpawner와 Enemy가 새로운 플레이어를 타겟으로 인식하지 못함. Null Reference 에러 발생.",
+      solution: "GameManager의 SpawnPlayer()에서 Respawn Coroutine을 통해 3초 후 플레이어 생성. BulletSpawner.SpawnTarget() 메서드를 호출하여 새로 생성된 플레이어를 타겟으로 재설정.",
+      code: `IEnumerator Respawn() {
+  yield return new WaitForSeconds(3.0f);
+  GameObject obj = Instantiate(Player, SpawnPointer.transform.position, Quaternion.identity);
+  BulletSpawner bulletSpawner = FindFirstObjectByType<BulletSpawner>();
+  if (bulletSpawner != null) {
+    bulletSpawner.SpawnTarget();
   }
-};
+}`
+    },
+    {
+      label: "CHALLENGE 02",
+      title: "적 AI 공격 범위 감지 최적화",
+      problem: "Update()에서 매 프레임마다 Physics.OverlapSphere()를 호출하여 성능 저하 발생.",
+      solution: "Animation Event를 활용하여 공격 애니메이션 특정 프레임에서만 Attack() 메서드 실행. 불필요한 Physics 연산 제거.",
+      code: `// Animator에서 Attack 애니메이션 이벤트로 호출
+public void Attack() {
+  Collider[] hitColliders = Physics.OverlapSphere(transform.position, AttackRange);
+  foreach (Collider hitCollider in hitColliders) {
+    if (hitCollider.CompareTag("Player")) {
+      hitCollider.GetComponent<PlayerController>().Die();
+    }
+  }
+}`
+    },
+    {
+      label: "CHALLENGE 03",
+      title: "중복 피격 방지 시스템",
+      problem: "총알이 플레이어에게 맞은 후에도 OnTriggerEnter가 여러 번 호출되어 생명력이 과도하게 감소.",
+      solution: "PlayerController에 HasHit 플래그를 추가하여 이미 피격당한 플레이어는 추가 피격을 무시. Bullet에서 피격 시 즉시 Destroy하여 중복 충돌 방지.",
+      code: `// Bullet.cs
+if (other.gameObject.CompareTag("Player")) {
+  PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
+  if (playerController.HasHit) return; // 이미 피격됨
+  playerController.HasHit = true;
+  other.gameObject.GetComponent<PlayerController>().Die();
+  Destroy(gameObject);
+}`
+    }
+  ]
+}
 
 function openProjectModal(projectId) {
   const project = projectsData[projectId];
