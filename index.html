@@ -1683,21 +1683,19 @@ private IEnumerator Coroutine_ResetAudioMixer() {<br>
           <div class="modal-timeline-item">
             <div class="modal-timeline-dot"></div>
             <div class="modal-timeline-label">CHALLENGE 02</div>
-            <h4 class="modal-timeline-title">Spatial Audio Source Pooling</h4>
+            <h4 class="modal-timeline-title">5.1채널 공간 음향 출력 문제</h4>
             <div class="modal-timeline-content">
               <p>
-                <strong>문제:</strong> 동시에 많은 3D 사운드 재생 시 성능 저하 및 AudioSource 중복 생성 발생.
+                <strong>문제:</strong> Unity 프로젝트에서 Audio를 3D로 설정하고 Project Settings에서 5.1채널로 지정했지만, 
+                실제 스피커에서는 스테레오(2채널)로만 출력되는 문제 발생.
               </p>
               <p style="margin-top: 10px;">
-                <strong>해결:</strong> 32개의 AudioSource Pool을 사전 생성하고, 거리 기반 우선순위 시스템으로 
-                가장 가까운 사운드만 재생. 메모리 효율 향상 및 자연스러운 음원 페이드.
+                <strong>해결:</strong> PC와 5.1채널 스피커 시스템 간의 오디오 인터페이스 드라이버를 재설치하고,
+                Windows 사운드 설정에서 출력 형식을 5.1 Surround로 변경. 
+                Unity Audio Listener와 스피커 채널 매핑을 확인하여 정상 출력 확인.
               </p>
               <div class="modal-timeline-code">
-// 거리 기반 우선순위 정렬<br>
-virtualSounds = virtualSounds<br>
-&nbsp;&nbsp;.OrderBy(vs => Vector3.Distance(<br>
-&nbsp;&nbsp;&nbsp;&nbsp;vs.position, listener.position))<br>
-&nbsp;&nbsp;.ToList();
+
               </div>
             </div>
           </div>
@@ -1705,24 +1703,20 @@ virtualSounds = virtualSounds<br>
           <div class="modal-timeline-item">
             <div class="modal-timeline-dot"></div>
             <div class="modal-timeline-label">CHALLENGE 03</div>
-            <h4 class="modal-timeline-title">Firebase Quaternion 회전 감지 정확도</h4>
+            <h4 class="modal-timeline-title">PC-블루투스 운동기구 연동 불가 문제</h4>
             <div class="modal-timeline-content">
               <p>
-                <strong>문제:</strong> Quaternion 값이 미세하게 변해도 회전으로 인식되어 오차 누적.
+                <strong>문제:</strong> Unity와 모바일은 Bluetooth 직접 연결이 가능하지만, 
+                PC(Windows)에서는 Unity 프로젝트가 블루투스 운동기구와 직접 통신할 수 없는 제약 존재.
               </p>
               <p style="margin-top: 10px;">
-                <strong>해결:</strong> 각도 차이 누적 방식 사용. 360도 기준으로 정확한 회전 카운트 및 
-                잔여 각도 보존으로 연속 회전 지원.
+                <strong>해결:</strong> 1. 모바일 앱 개발: Android 앱에서 블루투스 운동기구의 회전 센서 값을 수신
+                2. Firebase Realtime Database: 모바일 앱에서 받은 회전 데이터를 실시간으로 Firebase에 업로드
+                3. Unity PC 클라이언트: Firebase SDK로 실시간 리스닝하여 회전 값을 게임 내 플레이어 이동으로 변환
+                이 구조를 통해 Bluetooth → Mobile → Firebase → PC Unity 데이터 흐름 완성.
               </p>
               <div class="modal-timeline-code">
-float deltaAngle = Quaternion.Angle(<br>
-&nbsp;&nbsp;lastRotation, currentRotation);<br>
-accumulatedAngle += deltaAngle;<br>
-<br>
-if (accumulatedAngle >= 360f) {<br>
-&nbsp;&nbsp;RotationCount++;<br>
-&nbsp;&nbsp;accumulatedAngle -= 360f; // 오차 보정<br>
-}
+
               </div>
             </div>
           </div>
