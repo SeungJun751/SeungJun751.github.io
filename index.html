@@ -1784,37 +1784,19 @@ const projectsData = {
         label: "CHALLENGE 01",
         title: "오디오 믹서 볼륨 초기화 문제",
         problem: "씬 전환 후 BGM 볼륨이 -80dB로 초기화되어 소리가 들리지 않음. AudioMixer.SetFloat()가 즉시 적용되지 않고 프레임 지연 발생.",
-        solution: "Coroutine을 활용하여 1프레임 대기 후 볼륨 복구 로직 구현. 씬 전환 시 안정적인 오디오 재생 보장.",
-        code: `private IEnumerator Coroutine_ResetAudioMixer() {
-  audioMixer.SetFloat("BGMVolume", -80f);
-  yield return null; // 1프레임 대기
-  SetBGMVolume(targetBgmVolume); // 복구
-}`
+        solution: "Coroutine을 활용하여 1프레임 대기 후 볼륨 복구 로직 구현. 씬 전환 시 안정적인 오디오 재생 보장."
       },
       {
         label: "CHALLENGE 02",
-        title: "Spatial Audio Source Pooling",
-        problem: "동시에 많은 3D 사운드 재생 시 성능 저하 및 AudioSource 중복 생성 발생.",
-        solution: "32개의 AudioSource Pool을 사전 생성하고, 거리 기반 우선순위 시스템으로 가장 가까운 사운드만 재생. 메모리 효율 향상 및 자연스러운 음원 페이드.",
-        code: `// 거리 기반 우선순위 정렬
-virtualSounds = virtualSounds
-  .OrderBy(vs => Vector3.Distance(
-    vs.position, listener.position))
-  .ToList();`
+        title: "5.1채널 공간 음향 출력 문제",
+        problem: "Unity 프로젝트에서 Audio를 3D로 설정하고 Project Settings에서 5.1채널로 지정했지만, 실제 스피커에서는 스테레오(2채널)로만 출력되는 문제 발생.",
+        solution: "PC와 5.1채널 스피커 시스템 간의 오디오 인터페이스 드라이버를 재설치하고, Windows 사운드 설정에서 출력 형식을 5.1 Surround로 변경. Unity Audio Listener와 스피커 채널 매핑을 확인하여 정상 출력 확인."
       },
       {
         label: "CHALLENGE 03",
-        title: "Firebase Quaternion 회전 감지 정확도",
-        problem: "Quaternion 값이 미세하게 변해도 회전으로 인식되어 오차 누적.",
-        solution: "각도 차이 누적 방식 사용. 360도 기준으로 정확한 회전 카운트 및 잔여 각도 보존으로 연속 회전 지원.",
-        code: `float deltaAngle = Quaternion.Angle(
-  lastRotation, currentRotation);
-accumulatedAngle += deltaAngle;
- 
-if (accumulatedAngle >= 360f) {
-  RotationCount++;
-  accumulatedAngle -= 360f; // 오차 보정
-}`
+        title: "PC-블루투스 운동기구 연동 불가 문제",
+        problem: "Unity와 모바일은 Bluetooth 직접 연결이 가능하지만, PC(Windows)에서는 Unity 프로젝트가 블루투스 운동기구와 직접 통신할 수 없는 제약 존재.",
+        solution: "3단계 중계 시스템 구축. ① Android 앱에서 블루투스 운동기구의 회전 센서 값을 수신 → ② Firebase Realtime Database에 실시간 업로드 → ③ Unity PC 클라이언트가 Firebase SDK로 리스닝하여 회전 값을 게임 내 플레이어 이동으로 변환. Bluetooth → Mobile → Firebase → PC Unity 데이터 흐름 완성."
       }
     ]
   },
