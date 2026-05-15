@@ -1926,7 +1926,7 @@ if (other.gameObject.CompareTag("Player")) {
 };
 
 function openProjectModal(projectId) {
-  const project = [projectId];
+  const project = projectsData[projectId];
   if (!project) return;
   
   document.getElementById('modalCategory').textContent = project.category;
