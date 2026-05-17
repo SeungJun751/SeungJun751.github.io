@@ -1840,7 +1840,12 @@ document.addEventListener('mousemove', e => {
   glow.style.top = e.clientY + 'px';
 });
 
-const io = new IntersectionObserver(
+const glow = document.getElementById('glow');
+document.addEventListener('mousemove', e => {
+  glow.style.left = e.clientX + 'px';
+  glow.style.top = e.clientY + 'px';
+});
+
 class ImageSlider {
   constructor(container, images) {
     this.container = container;
@@ -1923,6 +1928,8 @@ class ImageSlider {
 }
 
 let slider;
+
+const io = new IntersectionObserver(
   entries => entries.forEach(entry => { 
     if (entry.isIntersecting) entry.target.classList.add('vis'); 
   }),
@@ -2074,7 +2081,7 @@ const projectsData = {
       images: [
       "screenshots/dodge_1.jpg",
       "screenshots/dodge_2.jpg",
-      "screenshots/sdodge_3.jpg"
+      "screenshots/dodge_3.jpg"
     ],
   screenshot: "screenshots/dodge-game.png",
   githubLink: "https://github.com/SeungJun751/DodgeGame",
