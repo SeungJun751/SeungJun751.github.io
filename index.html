@@ -1727,7 +1727,7 @@ footer strong {
           <div class="modal-info-block">
             <h3>기술 스택</h3>
             <div class="modal-tech-list" id="modalTechStack">
-              <span class="modal-tech-tag">Unity 2022</span>
+              <span class="modal-tech-tag">Unity 6</span>
               <span class="modal-tech-tag">C#</span>
               <span class="modal-tech-tag">Firebase</span>
             </div>
@@ -2155,13 +2155,6 @@ function openProjectModal(projectId) {
   
   document.getElementById('modalGithubLink').href = project.githubLink;
   document.getElementById('modalVideoLink').href = project.videoLink;
-
-  const screenshotContainer = document.getElementById('modalScreenshot');
-  if (project.screenshot) {
-    screenshotContainer.innerHTML = `<img src="${project.screenshot}" alt="${project.title} 스크린샷">`;
-  } else {
-    screenshotContainer.innerHTML = '<div style="padding: 40px; text-align: center; color: var(--muted);">이미지 준비중</div>';
-  }
 
   const challengesContainer = document.getElementById('modalChallenges');
   if (project.challenges && project.challenges.length > 0) {
