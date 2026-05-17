@@ -1785,47 +1785,6 @@ footer strong {
             </div>
           </div>
           
-          <div class="modal-timeline-item">
-            <div class="modal-timeline-dot"></div>
-            <div class="modal-timeline-label">CHALLENGE 02</div>
-            <h4 class="modal-timeline-title">5.1채널 공간 음향 출력 문제</h4>
-            <div class="modal-timeline-content">
-              <p>
-                <strong>문제:</strong> Unity 프로젝트에서 Audio를 3D로 설정하고 Project Settings에서 5.1채널로 지정했지만, 
-                실제 스피커에서는 스테레오(2채널)로만 출력되는 문제 발생.
-              </p>
-              <p style="margin-top: 10px;">
-                <strong>해결:</strong> PC와 5.1채널 스피커 시스템 간의 오디오 인터페이스 드라이버를 재설치하고,
-                Windows 사운드 설정에서 출력 형식을 5.1 Surround로 변경. 
-                Unity Audio Listener와 스피커 채널 매핑을 확인하여 정상 출력 확인.
-              </p>
-              <div class="modal-timeline-code">
-
-              </div>
-            </div>
-          </div>
-          
-          <div class="modal-timeline-item">
-            <div class="modal-timeline-dot"></div>
-            <div class="modal-timeline-label">CHALLENGE 03</div>
-            <h4 class="modal-timeline-title">PC-블루투스 운동기구 연동 불가 문제</h4>
-            <div class="modal-timeline-content">
-              <p>
-                <strong>문제:</strong> Unity와 모바일은 Bluetooth 직접 연결이 가능하지만, 
-                PC(Windows)에서는 Unity 프로젝트가 블루투스 운동기구와 직접 통신할 수 없는 제약 존재.
-              </p>
-              <p style="margin-top: 10px;">
-                <strong>해결:</strong> 1. 모바일 앱 개발: Android 앱에서 블루투스 운동기구의 회전 센서 값을 수신
-                2. Firebase Realtime Database: 모바일 앱에서 받은 회전 데이터를 실시간으로 Firebase에 업로드
-                3. Unity PC 클라이언트: Firebase SDK로 실시간 리스닝하여 회전 값을 게임 내 플레이어 이동으로 변환
-                이 구조를 통해 Bluetooth → Mobile → Firebase → PC Unity 데이터 흐름 완성.
-              </p>
-              <div class="modal-timeline-code">
-
-              </div>
-            </div>
-          </div>
-          
         </div>
       </div>
       
