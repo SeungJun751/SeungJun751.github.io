@@ -1035,6 +1035,112 @@ footer strong {
   margin-top: 20px;
 }
 
+.image-slider {
+  position: relative;
+  width: 100%;
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.slider-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.slider-track {
+  display: flex;
+  transition: transform 0.4s ease;
+  height: 100%;
+}
+
+.slider-slide {
+  min-width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+}
+
+.slider-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--gold);
+  font-size: 20px;
+  transition: all 0.2s;
+  z-index: 10;
+  user-select: none;
+}
+
+.slider-btn:hover {
+  background: rgba(201, 168, 76, 0.2);
+  border-color: var(--gold);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.slider-btn-prev {
+  left: 16px;
+}
+
+.slider-btn-next {
+  right: 16px;
+}
+
+.slider-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 0;
+  background: var(--bg2);
+}
+
+.slider-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--muted);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.slider-dot.active {
+  background: var(--gold);
+  width: 24px;
+  border-radius: 4px;
+}
+
+.slider-dot:hover:not(.active) {
+  background: var(--text2);
+}
+
 .modal-screenshot img {
   width: 100%;
   height: auto; 
@@ -1606,8 +1712,7 @@ footer strong {
       
       <div class="modal-main">
 
-         <div class="modal-screenshot" id="modalScreenshot">
-          <img src="screenshots/project1-screen.jpg" alt="게임 스크린샷">
+        <div class="image-slider" id="imageSlider">
         </div>
         
         <div class="modal-info">
@@ -1736,6 +1841,88 @@ document.addEventListener('mousemove', e => {
 });
 
 const io = new IntersectionObserver(
+class ImageSlider {
+  constructor(container, images) {
+    this.container = container;
+    this.images = images;
+    this.currentIndex = 0;
+    this.render();
+  }
+
+  render() {
+    if (!this.images || this.images.length === 0) {
+      this.container.innerHTML = '<div style="padding: 40px; text-align: center; color: var(--muted);">이미지 준비중</div>';
+      return;
+    }
+
+    this.container.innerHTML = `
+      <div class="slider-container">
+        <div class="slider-track" id="sliderTrack">
+          ${this.images.map(img => `
+            <div class="slider-slide">
+              <img src="${img}" alt="프로젝트 스크린샷">
+            </div>
+          `).join('')}
+        </div>
+        ${this.images.length > 1 ? `
+          <button class="slider-btn slider-btn-prev" onclick="slider.prev()">‹</button>
+          <button class="slider-btn slider-btn-next" onclick="slider.next()">›</button>
+        ` : ''}
+      </div>
+      ${this.images.length > 1 ? `
+        <div class="slider-dots">
+          ${this.images.map((_, i) => `
+            <div class="slider-dot ${i === 0 ? 'active' : ''}" onclick="slider.goTo(${i})"></div>
+          `).join('')}
+        </div>
+      ` : ''}
+    `;
+
+    this.track = document.getElementById('sliderTrack');
+    this.updateButtons();
+  }
+
+  updateSlider() {
+    if (!this.track) return;
+    this.track.style.transform = `translateX(-${this.currentIndex * 100}%)`;
+    
+    const dots = this.container.querySelectorAll('.slider-dot');
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === this.currentIndex);
+    });
+    
+    this.updateButtons();
+  }
+
+  updateButtons() {
+    const prevBtn = this.container.querySelector('.slider-btn-prev');
+    const nextBtn = this.container.querySelector('.slider-btn-next');
+    
+    if (prevBtn) prevBtn.disabled = this.currentIndex === 0;
+    if (nextBtn) nextBtn.disabled = this.currentIndex === this.images.length - 1;
+  }
+
+  next() {
+    if (this.currentIndex < this.images.length - 1) {
+      this.currentIndex++;
+      this.updateSlider();
+    }
+  }
+
+  prev() {
+    if (this.currentIndex > 0) {
+      this.currentIndex--;
+      this.updateSlider();
+    }
+  }
+
+  goTo(index) {
+    this.currentIndex = index;
+    this.updateSlider();
+  }
+}
+
+let slider;
   entries => entries.forEach(entry => { 
     if (entry.isIntersecting) entry.target.classList.add('vis'); 
   }),
@@ -1775,6 +1962,11 @@ const projectsData = {
       "Google Gemini API 2.0 Flash 채팅 시스템",
       "매니저 기반 아키텍처 (Audio, Interaction, Loading)",
       "1인칭 시점 카메라 및 플레이어 제어 시스템"
+    ],
+        images: [
+      "screenshots/sov_1.jpg",
+      "screenshots/sov_2.jpg",
+      "screenshots/sov_3.jpg"
     ],
     screenshot: "screenshots/Sound_of_Vista_Title.png",
     githubLink: "https://github.com/SeungJun751/SOV",
@@ -1821,6 +2013,11 @@ const projectsData = {
       "필드 슬롯 관리 - 캐릭터 4슬롯 + 영구 카드 3슬롯",
       "턴별 배경 변화 시스템 (아침 → 낮 → 해질녘 → 밤)",
       "상대방 이탈 시 자동 승리 처리",
+    ],
+        images: [
+      "screenshots/tcg_1.jpg",
+      "screenshots/tcg_2.jpg",
+      "screenshots/tcg_3.jpg"
     ],
     screenshot: "screenshots/tcg-game.png",
     githubLink: "https://github.com/SeungJun751/CardBattleGame",
@@ -1874,6 +2071,11 @@ const projectsData = {
     "하트 UI를 통한 생명 시스템 (최대 5개)",
     "실시간 타이머 및 코인 카운트 UI"
   ],
+      images: [
+      "screenshots/dodge_1.jpg",
+      "screenshots/dodge_2.jpg",
+      "screenshots/sdodge_3.jpg"
+    ],
   screenshot: "screenshots/dodge-game.png",
   githubLink: "https://github.com/SeungJun751/DodgeGame",
   videoLink: "https://youtube.com/watch?v=dodge-game",
@@ -1936,6 +2138,9 @@ function openProjectModal(projectId) {
   document.getElementById('modalPeriod').textContent = project.period;
   document.getElementById('modalTeam').textContent = project.team;
   document.getElementById('modalOverview').textContent = project.overview;
+
+  const sliderContainer = document.getElementById('imageSlider');
+  slider = new ImageSlider(sliderContainer, project.images);
   
   const techStackContainer = document.getElementById('modalTechStack');
   techStackContainer.innerHTML = project.techStack
