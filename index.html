@@ -3,8 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="게임 개발자 김승준의 포트폴리오입니다. Unity, C#, Photon PUN2, Firebase 기반 프로젝트와 문제 해결 과정을 소개합니다.">
+<meta name="theme-color" content="#090a0e">
+<meta property="og:title" content="김승준 - Game Developer Portfolio">
+<meta property="og:description" content="Unity와 C#을 중심으로 공간 오디오, 멀티플레이, 모바일 게임 프로젝트를 개발하는 김승준의 포트폴리오입니다.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://seungjun751.github.io/">
+<meta property="og:image" content="https://seungjun751.github.io/images/profile.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="김승준 - Game Developer Portfolio">
+<meta name="twitter:description" content="Unity와 C# 기반 게임 프로젝트와 문제 해결 과정을 소개합니다.">
 <title>김승준 — Game Developer Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -1408,7 +1419,7 @@ footer strong {
 <div id="glow" class="cursor-glow"></div>
 
 <nav>
-  <a href="#" class="nav-logo">
+  <a href="#" class="nav-logo" aria-label="맨 위로 이동">
     <div class="nav-dot"></div>
     KIM SEUNGJUN
   </a>
@@ -1461,7 +1472,7 @@ footer strong {
       
       <div class="award-card">
         <div class="award-image">
-          <img src="awards/award_01.jpg" alt="award_01">
+          <img src="awards/award_01.jpg" alt="ICT 어워드코리아 금상 상장" loading="lazy" decoding="async">
       </div>
         <div class="award-year">2025</div>
         <div class="award-medal medal-gold">🥇 금상</div>
@@ -1576,9 +1587,9 @@ footer strong {
     
     <div class="projects-grid">
       
-      <div class="project-card" onclick="openProjectModal(1)">
+      <div class="project-card" role="button" tabindex="0" aria-label="Sound of Vista 프로젝트 상세 보기" onclick="openProjectModal(1)" onkeydown="handleProjectCardKeydown(event, 1)">
         <div class="project-thumb">
-          <img src="screenshots/sov_2.png" alt="Sound of Vista" class="project-img">
+          <img src="screenshots/sov_2.png" alt="Sound of Vista 게임 화면" class="project-img" loading="lazy" decoding="async">
         </div>
         <div class="project-body">
           <h3 class="project-title">Sound of Vista</h3>
@@ -1595,7 +1606,7 @@ footer strong {
         </div>
       </div>
       
-      <div class="project-card" onclick="openProjectModal(2)">
+      <div class="project-card" role="button" tabindex="0" aria-label="전선 가디언즈 프로젝트 상세 보기" onclick="openProjectModal(2)" onkeydown="handleProjectCardKeydown(event, 2)">
         <div class="project-thumb">
           <img src="screenshots/tcg_1.png" alt="전선 가디언즈" class="project-img">
         </div>
@@ -1613,9 +1624,9 @@ footer strong {
         </div>
       </div>
       
-      <div class="project-card" onclick="openProjectModal(3)">
+      <div class="project-card" role="button" tabindex="0" aria-label="Dodge Game 프로젝트 상세 보기" onclick="openProjectModal(3)" onkeydown="handleProjectCardKeydown(event, 3)">
         <div class="project-thumb">
-          <img src="screenshots/dodge_1.png" alt="Dodge Game" class="project-img">
+          <img src="screenshots/dodge_1.png" alt="Dodge Game 플레이 화면" class="project-img" loading="lazy" decoding="async">
         </div>
         <div class="project-body">
           <h3 class="project-title">Dodge Game</h3>
@@ -1702,14 +1713,14 @@ footer strong {
       <div class="ci-dot"></div>
       ksjun0541@gmail.com
     </a>
-    <a href="https://github.com/yourusername" target="_blank" class="contact-item">
+    <a href="https://github.com/SeungJun751" target="_blank" rel="noopener noreferrer" class="contact-item">
       <div class="ci-dot"></div>
       GitHub
     </a>
-    <a href="#" class="contact-item">
+    <span class="contact-item contact-item-muted" aria-disabled="true">
       <div class="ci-dot"></div>
-      LinkedIn
-    </a>
+      LinkedIn 준비 중
+    </span>
   </div>
   <p>
     <strong>김승준</strong> · Game Developer<br>
@@ -1864,7 +1875,7 @@ class ImageSlider {
       ${this.images.length > 1 ? `
         <div class="slider-dots">
           ${this.images.map((_, i) => `
-            <div class="slider-dot ${i === 0 ? 'active' : ''}" onclick="slider.goTo(${i})"></div>
+            <button type="button" class="slider-dot ${i === 0 ? 'active' : ''}" onclick="slider.goTo(${i})" aria-label="${i + 1}번째 스크린샷 보기"></button>
           `).join('')}
         </div>
       ` : ''}
@@ -1967,7 +1978,7 @@ const projectsData = {
       "screenshots/sov_6.png",
       "screenshots/sov_7.png",
     ],
-    screenshot: "screenshots/Sound_of_Vista_Title.png",
+    screenshot: "screenshots/sov_2.png",
     githubLink: "https://github.com/SeungJun751/SOV",
     videoLink: "https://youtu.be/KZ4Gd42kTfo?si=mtIBdOqqs8kFopZG",
     challenges: [
@@ -2019,7 +2030,7 @@ const projectsData = {
       "screenshots/tcg_3.png",
       "screenshots/tcg_4.png" 
     ],
-    screenshot: "screenshots/tcg-game.png",
+    screenshot: "screenshots/tcg_1.png",
     githubLink: "https://github.com/SeungJun751/Frontline_Guardians.git",
     videoLink: "https://youtu.be/GCUG588E3Hs",
         challenges: [
@@ -2073,12 +2084,11 @@ const projectsData = {
   ],
       images: [
       "screenshots/dodge_1.png",
-      "screenshots/dodge_2.jpg",
-      "screenshots/dodge_3.jpg"
+      "screenshots/dodge_2.jpg"
     ],
-  screenshot: "screenshots/dodge-game.png",
+  screenshot: "screenshots/dodge_1.png",
   githubLink: "https://github.com/SeungJun751/DodgeGame",
-  //videoLink: "https://youtube.com/watch?v=dodge-game",
+  videoLink: "",
   challenges: [
     {
       label: "CHALLENGE 01",
@@ -2153,7 +2163,14 @@ function openProjectModal(projectId) {
     .join('');
   
   document.getElementById('modalGithubLink').href = project.githubLink;
-  document.getElementById('modalVideoLink').href = project.videoLink;
+  const videoLink = document.getElementById('modalVideoLink');
+  if (project.videoLink) {
+    videoLink.href = project.videoLink;
+    videoLink.style.display = '';
+  } else {
+    videoLink.removeAttribute('href');
+    videoLink.style.display = 'none';
+  }
 
   const challengesContainer = document.getElementById('modalChallenges');
   if (project.challenges && project.challenges.length > 0) {
